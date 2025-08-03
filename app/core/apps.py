@@ -1,4 +1,4 @@
-from django.apps import AppConfig # noqa
+from django.apps import AppConfig  # noqa
 
 
 class CoreConfig(AppConfig):
