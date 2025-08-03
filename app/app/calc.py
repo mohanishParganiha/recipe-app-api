@@ -4,8 +4,8 @@ calculator function
 
 def add(x, y):
 
-    """adding function to addition of two number returns int result"""
-    
+    """adding function to addition of two number returns int result"""  
+
     return x + y
 
 
