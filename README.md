@@ -31,19 +31,23 @@ It is a simple API backend for managing recipes, created while following a cours
 ```bash
 docker-compose build
 docker-compose up
+```
 
-### 🧪 Run tests
+## 🧪 Run tests
 
 ```bash 
 docker-compose run --rm app sh -c "python manage.py test"
+```
 
-### 🧼 Lint the code
+## 🧼 Lint the code
 
 ```bash
 docker-compose run --rm app sh -c "flake8"
-
+```
+---
 ## 📁 Project Structure
 
+```
 recipe-app-api/
 ├── app/           # Django project (settings, urls, etc.)
 ├── core/          # Custom app for models and features
@@ -52,7 +56,7 @@ recipe-app-api/
 ├── requirements.txt
 ├── requirements.dev.txt
 └── .github/workflows/  # GitHub Actions CI
-
+```
 ## 👨‍💻 Author
 Mohanish Parganiha
 Learning Django, Docker, and backend development from scratch.
