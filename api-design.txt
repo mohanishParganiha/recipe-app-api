@@ -1,0 +1,13 @@
+## this api will perform these tasks
+1: User  Registration
+2: Creating authentication token
+3:  Viewing/uploading profile
+
+## to perform these task we will create these endpoints
+1: user/create/
+    1.1: POST - Register a new user
+2: user/token/
+    2.1: POST - Creating new token
+3: user/me/
+    3.1 PUT/PATCH - updating profile
+    3.2 GET - view profile

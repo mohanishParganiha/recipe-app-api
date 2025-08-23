@@ -17,11 +17,17 @@ from drf_spectacular.views import (  # noqa
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
+from django.http import HttpResponse
 from django.contrib import admin  # noqa
 from django.urls import path  # noqa
 
 
+def home(request):
+    return HttpResponse("welcome to my Django app!")
+
+
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path(
