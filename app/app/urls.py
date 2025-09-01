@@ -19,7 +19,7 @@ from drf_spectacular.views import (  # noqa
 )
 from django.http import HttpResponse
 from django.contrib import admin  # noqa
-from django.urls import path  # noqa
+from django.urls import path, include  # noqa
 
 
 def home(request):
@@ -35,4 +35,5 @@ urlpatterns = [
         SpectacularSwaggerView.as_view(url_name='api-schema'),
         name='api-docs',
     ),
+    path('api/user/', include('user.urls')),
 ]
