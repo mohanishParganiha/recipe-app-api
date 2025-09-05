@@ -70,7 +70,7 @@ class PublicUserApiTest(TestCase):
         user_details = {
             'name': 'Test Name',
             'email': 'test@example.com',
-            'password': 'test-user-password123'
+            'password': 'test-user-password123',
         }
         create_user(**user_details)
 
@@ -82,7 +82,7 @@ class PublicUserApiTest(TestCase):
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertIn('token', res.data)
-        self.assertEqual(res.status_code, status.HTTP_200_ok)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
 
     def test_create_token_bad_credentials(self):
         """test returns error if credentials are invalid"""
@@ -93,18 +93,19 @@ class PublicUserApiTest(TestCase):
             'email': 'test@example.com',
             'password': 'badpassword',
         }
+
         res = self.client.post(TOKEN_URL, payload)
 
-        self.assertIn('token', res.data)
+        self.assertNotIn('token', res.data)
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_create_token_blank_passowrd(self):
         """test posting blank passowrd returns error"""
         payload = {
             'email': 'test@example.com',
-            'password': ''
+            'password': '',
         }
         res = self.client.post(TOKEN_URL, payload)
 
-        self.assertIn('token', res.data)
+        self.assertNotIn('token', res.data)
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
