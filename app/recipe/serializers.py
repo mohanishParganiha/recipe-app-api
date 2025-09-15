@@ -2,7 +2,8 @@
 
 from rest_framework import serializers  # noqa
 
-from core.models import Recipe
+from core.models import (Recipe,
+                         Tag)
 
 
 class RecipeSerializer(serializers.ModelSerializer):
@@ -19,3 +20,11 @@ class RecipeDetailSerializer(RecipeSerializer):
 
     class Meta(RecipeSerializer.Meta):
         fields = RecipeSerializer.Meta.fields + ['description']
+
+
+class TagSerializer(serializers.ModelSerializer):
+    """serializer for tag"""
+    class Meta:
+        model = Tag
+        fields = ['id', 'name']
+        read_only_fields = ['id']
