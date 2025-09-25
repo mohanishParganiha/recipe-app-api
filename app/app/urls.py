@@ -21,6 +21,9 @@ from django.http import HttpResponse
 from django.contrib import admin  # noqa
 from django.urls import path, include  # noqa
 
+from django.conf.urls.static import static  # noqa
+from django.conf import settings  # noqa
+
 
 def home(request):
     return HttpResponse("welcome to my Django app!")
@@ -38,3 +41,9 @@ urlpatterns = [
     path('api/user/', include('user.urls')),
     path('api/recipe/', include('recipe.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT,
+    )
