@@ -65,7 +65,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if Ingredient:
             ingredient_ids = self._params_to_ints(Ingredient)
             queryset = queryset.filter(ingredients__id__in=ingredient_ids)
-        return queryset.filter(user=self.request.user).order_by('-id').distinct()
+        return queryset.filter(
+            user=self.request.user).order_by('-id').distinct()
 
     def get_serializer_class(self):
         """return the serializer class for request."""
@@ -80,7 +81,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """create a new recipe"""
         serializer.save(user=self.request.user)
 
-    @action(methods=['POST'], detail=True, url_path='upload_image', parser_classes=[MultiPartParser, FormParser])
+    @action(
+        methods=['POST'], detail=True,
+        url_path='upload_image',
+        parser_classes=[MultiPartParser, FormParser]
+    )
     def upload_image(self, request, pk=None):
         """upload an image to recipe."""
 
