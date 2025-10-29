@@ -17,7 +17,8 @@ from drf_spectacular.views import (  # noqa
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
-from django.http import HttpResponse
+from core import views as core_views  # noqa
+from django.http import HttpResponse  # noqa
 from django.contrib import admin  # noqa
 from django.urls import path, include  # noqa
 
@@ -32,6 +33,7 @@ def home(request):
 urlpatterns = [
     path('', home, name='home'),
     path('admin/', admin.site.urls),
+    path('api/health-check/', core_views.health_check, name='health-check'),
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path(
         'api/docs/',
